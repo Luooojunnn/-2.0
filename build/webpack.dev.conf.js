@@ -74,6 +74,7 @@ module.exports = new Promise((resolve, reject) => {
     if (err) {
       reject(err)
     } else {
+      console.log(port)
       // publish the new Port, necessary for e2e tests
       process.env.PORT = port
       // add port to devServer config
@@ -88,7 +89,6 @@ module.exports = new Promise((resolve, reject) => {
         ? utils.createNotifierCallback()
         : undefined
       }))
-
       resolve(devWebpackConfig)
     }
   })
