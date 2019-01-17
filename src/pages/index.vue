@@ -27,6 +27,23 @@ export default {
     Pages,
     Imgs,
     Footer
+  },
+  methods: {
+    getFc() {
+      this.$http
+      .get('a', {
+        params: {
+          age: 11
+
+        }
+      })
+      .then(res => {
+        console.log(res)
+      })
+    }
+  },
+  mounted() {
+    this.getFc()
   }
 };
 </script>

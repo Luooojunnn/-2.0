@@ -3,8 +3,10 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import Http from './utils/http'
 
 Vue.config.productionTip = false
+Vue.prototype.$http = Http
 
 /* eslint-disable no-new */
 new Vue({

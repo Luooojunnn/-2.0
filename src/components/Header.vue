@@ -91,13 +91,13 @@ export default {
     border-top: solid 1px #e6e6e6;
     margin-top: 8px;
     padding-top: 8px;
-    animation: heightAdd2 1s cubic-bezier(.12,.65,.66,1) forwards;
+    animation: heightAdd2 0.6s cubic-bezier(.12,.65,.66,1) forwards;
   }
   .oper-more-menu2 {
     border-top: solid 1px #e6e6e6;
     margin-top: 8px;
     padding-top: 8px;
-    animation: heightReduce 1s cubic-bezier(.12,.65,.66,1) forwards;
+    animation: heightReduce 0.4s cubic-bezier(.12,.65,.66,1) forwards;
   }
   @media screen and (max-width: 768px) {
     .oper-wrap {
