@@ -29,21 +29,21 @@ export default {
     Footer
   },
   methods: {
-    getFc() {
-      this.$http
-      .get('a', {
-        params: {
-          age: 11
+    // getFc() {
+    //   this.$http
+    //   .get('getTenPages', {
+    //     params: {
+    //       age: 11
 
-        }
-      })
-      .then(res => {
-        console.log(res)
-      })
-    }
+    //     }
+    //   })
+    //   .then(res => {
+    //     console.log(res)
+    //   })
+    // }
   },
   mounted() {
-    this.getFc()
+    // this.getFc()
   }
 };
 </script>

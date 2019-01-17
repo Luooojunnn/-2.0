@@ -1,8 +1,8 @@
 const ax = require('axios')
 const env = 'test'
 const apiObj = {
-    a: {
-        test: '/static/mock/a.json'
+    getTenPages: {
+        test: '/static/mock/getTenPages.json'
     }
 }
 

@@ -52,6 +52,22 @@ export default {
         }
       ]
     };
+  },
+  methods: {
+      getTenPages() {
+          this.$http
+          .get('getTenPages', {
+              params: {
+                  nums: 5
+              }
+          })
+          .then(res => {
+              console.log(res)
+          })
+      }
+  },
+  mounted() {
+      this.getTenPages()
   }
 };
 </script>

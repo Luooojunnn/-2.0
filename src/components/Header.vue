@@ -39,7 +39,8 @@ export default {
       this.seaMore = !this.seaMore
       this.clickedSeaMore = true
       console.log(this.seaMore)
-    }
+    },
+    
   },
   components: {
     logo
