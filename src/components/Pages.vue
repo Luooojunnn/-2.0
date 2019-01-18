@@ -1,8 +1,8 @@
 <template>
     <div id="pages">
-        <p v-for="item in pageApi" :key="item.url" class="tit">
-            <span class="time">{{item.time}}</span>
-            <span class="page-tit">{{item.tit}}</span>
+        <p v-for="item in pageApi" :key="item.id" class="tit">
+            <span class="time">{{item.createTime}}</span>
+            <span class="page-tit">{{item.title}}</span>
         </p>
     </div>
 </template>
@@ -10,33 +10,7 @@
 export default {
   data() {
     return {
-      pageApi: [
-        {
-          tit: "第一篇文章",
-          url: "xx",
-          time: "12-11-02"
-        },
-        {
-          tit: "第一篇文章",
-          url: "xx",
-          time: "12-11-02"
-        },
-        {
-          tit: "第一篇文章",
-          url: "xx",
-          time: "12-11-02"
-        },
-        {
-          tit: "第一篇文章",
-          url: "xx",
-          time: "12-11-02"
-        },
-        {
-          tit: "第一篇文章",
-          url: "xx",
-          time: "12-11-02"
-        }
-      ],
+      pageApi: [],
       imgApi: [
         {
           url: "xxx",
@@ -62,7 +36,8 @@ export default {
               }
           })
           .then(res => {
-              console.log(res)
+              this.pageApi = res
+              console.log(this.pageApi)
           })
       }
   },
@@ -109,7 +84,7 @@ export default {
         display: block;
       }
       .time {
-        margin-bottom: 8px;
+        margin-bottom: 12px;
       }
       .page-tit {
         margin-left: 0;
