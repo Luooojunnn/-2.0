@@ -5,9 +5,9 @@
                 <logo></logo>
             </div>
             <div class="oper-wrap">
-                <span>Home</span>
-                <span>Search</span>
-                <span>About</span>
+                <span class="nav-text" data-desc='主页' @click="goTo('/')">Home</span>
+                <span class="nav-text" data-desc='搜索' >Search</span>
+                <span class="nav-text" data-desc='关于' >About</span>
             </div>
             <div class="oper-more" @click="openMore">
                 <div class="oper-more-item" :class="seaMore?'oper-more-item1':''"></div>
@@ -16,7 +16,7 @@
             </div>
         </div>
         <div class="oper-more-menu" :class="clickedSeaMore?(seaMore?'oper-more-menu1':'oper-more-menu2'):''">
-            <div>Home</div>
+            <div @click="goTo('/')">Home</div>
             <div>Search</div>
             <div>About</div>
         </div>
@@ -38,9 +38,11 @@ export default {
     openMore() {
       this.seaMore = !this.seaMore
       this.clickedSeaMore = true
-      console.log(this.seaMore)
+      this.$emit('openMore', this.seaMore)
     },
-    
+    goTo(v) {
+      this.$router.push(v)
+    }
   },
   components: {
     logo
@@ -52,7 +54,7 @@ export default {
 #main-header-wrap {
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
-  box-shadow: 1px 2px 3px #e6e6e6;
+  box-shadow: 1px 2px 3px 2px #e6e6e6;
   padding: 0 10px 10px;
   .main-header {
     padding-top: 28px;
@@ -69,6 +71,27 @@ export default {
         color: #232323;
         padding: 5px;
         cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        font-weight: bold;
+        &:hover {
+          // &::before {
+          //   color: #000;
+          //   transform: translateY(-10px) scale(1);
+          // }
+          &::after {
+            color: #000;
+            transform: translateY(20px) scale(1);
+          }
+        }
+      }
+      .nav-text::before, .nav-text::after {
+        position: absolute;
+        content: attr(data-desc);
+        left: 5px;
+        transition: all .2s ease;
+        z-index: -1;
+        color: transparent;
       }
     }
     .oper-more {
@@ -85,7 +108,7 @@ export default {
       height: 30px;
       line-height: 30px;
       font-size: 15px;
-      font-weight: 300;
+      font-weight: bold;
     }
   }
   .oper-more-menu1 {

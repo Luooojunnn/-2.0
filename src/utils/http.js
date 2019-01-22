@@ -1,9 +1,15 @@
 const ax = require('axios')
 const env = 'test'
 const apiObj = {
-    getTenPages: {
-        test: 'http://localhost:3000/pages/getFivePages'
-    }
+    getArticles: {
+        test: 'http://localhost:3000/articles/getArticles'
+    },
+    getImgs: {
+        test: 'http://localhost:3000/imgs/getImgs'
+    },
+    getDetailArticle: {
+        test: 'http://localhost:3000/articles/getDetailArticle'
+    },
 }
 
 ax.interceptors.request.use(function (config) {

@@ -1,5 +1,5 @@
 <template>
-    <div id="logo">
+    <div id="logo" @click="goHome">
         <div class="logo-text" data-word='JLM'>
             JLM
             <div class="white-line"></div>
@@ -8,7 +8,13 @@
     
 </template>
 <script>
-export default {};
+export default {
+  methods: {
+    goHome() {
+      this.$router.push('/')
+    }
+  }
+};
 </script>
 
 <style lang='scss' scoped>
@@ -19,6 +25,7 @@ export default {};
     font-size: 64px;
     font-family: Raleway, Verdana, Arial, sans-serif;
     animation: skewX 5s ease-in infinite;
+    height: 64px;
   }
 
   .white-line {
@@ -43,7 +50,7 @@ export default {};
     overflow: hidden;
     z-index: 2;
     animation: redShadow 1.5s ease-in infinite;
-    -webkit-filter: contrast(200%);
+    filter: contrast(200%);
     text-shadow: 0.1px 0 0 red;
     mix-blend-mode: color-burn;
   }
@@ -59,7 +66,7 @@ export default {};
     z-index: 3;
     background: rgba(255, 255, 255, 0.9);
     animation: redHeight 2s ease-out infinite;
-    -webkit-filter: contrast(200%);
+    filter: contrast(200%);
     mix-blend-mode: hard-light;
   }
 

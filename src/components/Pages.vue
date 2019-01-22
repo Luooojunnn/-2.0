@@ -1,48 +1,44 @@
 <template>
     <div id="pages">
-        <p v-for="item in pageApi" :key="item.id" class="tit">
+        <p v-for="item in pageApi" :key="item.id" class="tit" @click='jumpTo(item.id)'>
             <span class="time">{{item.createTime}}</span>
             <span class="page-tit">{{item.title}}</span>
         </p>
     </div>
 </template>
 <script>
+
 export default {
+  props: {
+    nums: String
+  },
   data() {
     return {
-      pageApi: [],
-      imgApi: [
-        {
-          url: "xxx",
-          tit: "第一张图片"
-        },
-        {
-          url: "xxx",
-          tit: "第一张图片"
-        },
-        {
-          url: "xxx",
-          tit: "第一张图片"
-        }
-      ]
+      pageApi: []
     };
   },
+  
   methods: {
-      getTenPages() {
+      getArticles() {
           this.$http
-          .get('getTenPages', {
+          .get('getArticles', {
               params: {
-                  nums: 5
+                  nums: this.nums
               }
           })
           .then(res => {
               this.pageApi = res
-              console.log(this.pageApi)
           })
+          .catch(err => {
+            throw new Error(err)
+          })
+      },
+      jumpTo(id) {
+        this.$router.push('/article/' + id)
       }
   },
   mounted() {
-      this.getTenPages()
+      this.getArticles()
   }
 };
 </script>

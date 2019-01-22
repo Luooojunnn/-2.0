@@ -1,31 +1,31 @@
 <template>
     <div id="imgs">
-        <img src="@/assets/file.png">
-        <img src="@/assets/file.png">
-        <img src="@/assets/file.png">
-        <img src="@/assets/file.png">
-        <img src="@/assets/file.png">
+        <img v-for="item in imgApi" :src="item.imgUrl" :key='item.id'>
     </div>
 </template>
 <script>
 export default {
   data() {
     return {
-      imgApi: [
-        {
-          url: "xxx",
-          tit: "第一张图片"
-        },
-        {
-          url: "xxx",
-          tit: "第一张图片"
-        },
-        {
-          url: "xxx",
-          tit: "第一张图片"
-        }
-      ]
+      imgApi: []
     };
+  },
+  methods: {
+    getImgs() {
+          this.$http
+          .get('getImgs', {
+              params: {
+                  nums: 3
+              }
+          })
+          .then(res => {
+              this.imgApi = res
+              console.log(this.imgApi)
+          })
+    }
+  },
+  mounted() {
+    this.getImgs()
   }
 };
 </script>
@@ -33,9 +33,12 @@ export default {
 #imgs {
   white-space: nowrap;
   overflow-x: scroll;
+  overflow-y: hidden;
+  padding-right: 10px;
   img {
-    width: 328px;
     height: 220px;
+    margin-left: 10px;
+    cursor: pointer;
   }
 }
 </style>
